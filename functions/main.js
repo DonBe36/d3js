@@ -5,19 +5,11 @@ function getSolutions(a, b, c) {
   let x1, x2;
   if (D > 0) {
     x1 = ((-b - Math.sqrt(D))/(2 * a));
-<<<<<<< HEAD
     x2 = ((-b + Math.sqrt(D))/(2 * a));
     return { roots: [x1, x2], D };
   } else if (D < 0) {
     return { D };
   } else if (D == 0) {
-=======
-   x2 = ((-b + Math.sqrt(D))/(2 * a));
-    return { roots: [x1, x2], D: D };
- } else if (D < 0) {
-   return { D: D };
- } else if (D == 0) {
->>>>>>> d0711eb6a42213179bf8ddf3a9e49c08eb46e180
     x1 = -b/2 * a;
     return { roots: [x1], D };
   };
