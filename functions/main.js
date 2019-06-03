@@ -5,13 +5,13 @@ function getSolutions(a, b, c) {
   let x1, x2;
   if (D > 0) {
     x1 = ((-b - Math.sqrt(D))/(2 * a));
-    x2 = ((-b + Math.sqrt(D))/(2 * a));
-    return { roots: [x1, x2], D };
-  } else if (D < 0) {
-    return { D };
-  } else if (D == 0) {
+   x2 = ((-b + Math.sqrt(D))/(2 * a));
+    return { roots: [x1, x2], D: D };
+ } else if (D < 0) {
+   return { D: D };
+ } else if (D == 0) {
     x1 = -b/2 * a;
-    return { roots: [x1], D };
+    return { roots: x1, D: D };
   };
 };
 
@@ -34,56 +34,61 @@ showSolutionsMessage( 2, 4, 2);
 
 
 //Задача 2
-
 function getAverageScore(data) {
   let allAverage = 0;
-  let objLength  = 0;
+  let objectLength  = 0;
   for ( let averageMark in data ) {
     let value = data[ averageMark ];
-    let sum = 0;
+    let sumResult = 0;
     for (let i = 0; i < value.length; i++) {
-      sum = sum + value[i];
+      sumResult = sumResult + value[i];
     };
-    data[ averageMark ] = sum / value.length;
+    data[ averageMark ] = sumResult / value.length;
     allAverage = allAverage + data[ averageMark ];
-    objLength++ 
-    data.average = allAverage / objLength;
+    objectLength++ 
+    data.average = allAverage / objectLength;
   };
   return data;
 };
 
-console.log(getAverageScore({
-  algebra: [3,4,5,4,5],
-  music: [3,4,5],
-  chemistry: [3,2,4,5],
-  geometry: [3,4,5,4,5],
-  russian: [3],
-  physics: [3,4,4,5],
-  english: [3,4,5],
-  poetry: [3,4,5,2,5],
-  french: [3,3,4,5],
-  geography: [3,4,5]
+  console.log(getAverageScore({
+    algebra: [3,4,5,4,5],
+    music: [3,4,5],
+    chemistry: [3,2,4,5],
+    geometry: [3,4,5,4,5],
+    russian: [3],
+    physics: [3,4,4,5],
+    english: [3,4,5],
+    poetry: [3,4,5,2,5],
+    french: [3,3,4,5],
+    geography: [3,4,5]
+  
+  }));
 
-}));
+  // Задача № 3
 
-// Задача № 3
 
-function getPersonData(secretData) {
-  if (secretData.aaa === 0 && secretData.bbb === 0) {
-  return secretData = {firstName: "Родриго", lastName: "Родриго"};
-  } else if (secretData.aaa === 1 && secretData.bbb === 1) {
-  return secretData = {firstName: "Эмильо", lastName: "Эмильо"};
-  } else if (secretData.aaa === 0 && secretData.bbb === 1) {
-  return secretData = {firstName: "Родриго", lastName: "Эмильо"};
-  } else if (secretData.aaa === 1 && secretData.bbb === 0) {
-  return secretData = {firstName: "Эмильо", lastName: "Родриго"};
+  function getPersonData(secretData) {
+
+    function personData(value) {
+      return (value === 0) ? 'Родриго' : 'Эмильо';
+    };
+  
+    let firstName = personData(secretData.aaa), lastName = personData(secretData.bbb);
+    let result = {
+      firstName,
+      lastName
+    };
+    return result;
   };
-};
+  
 
 console.log(getPersonData({aaa: 0, bbb: 0}));
 console.log(getPersonData({aaa: 1, bbb: 1}));
 console.log(getPersonData({aaa: 0, bbb: 1}));
 console.log(getPersonData({aaa: 1, bbb: 0}));
+
+  
 
 
 
