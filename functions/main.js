@@ -65,29 +65,44 @@ function getAverageScore(data) {
   
   }));
 
-  // Задача № 3
+// Задача № 3
 
 
-  function getPersonData(secretData) {
-
-    function personData(value) {
-      return (value === 0) ? 'Родриго' : 'Эмильо';
-    };
-  
-    let firstName = personData(secretData.aaa), lastName = personData(secretData.bbb);
-    let result = {
-      firstName,
-      lastName
-    };
-    return result;
+function getName(number) {
+  if (number === 0) {
+    return 'Родриго';
+  } else {
+    return 'Эмильо';
   };
+};
+
+function getPersonData(secretData) {
+  let personData = {
+    firstName: getName(secretData.aaa),
+    lastName: getName(secretData.bbb)
+  };
+  return personData;
+};
   
+console.log(getPersonData({
+    aaa: 0,
+    bbb: 0,
+}));
 
-console.log(getPersonData({aaa: 0, bbb: 0}));
-console.log(getPersonData({aaa: 1, bbb: 1}));
-console.log(getPersonData({aaa: 0, bbb: 1}));
-console.log(getPersonData({aaa: 1, bbb: 0}));
+console.log(getPersonData({
+    aaa: 1,
+    bbb: 0,
+}));
 
+console.log(getPersonData({
+    aaa: 0,
+    bbb: 1,
+}));
+
+console.log(getPersonData({
+    aaa: 1,
+    bbb: 1,
+}));
   
 
 
